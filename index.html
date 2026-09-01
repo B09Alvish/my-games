@@ -1,64 +1,90 @@
-<div class="hero-card">
-            <div class="badge">🎮 Учитесь играя!</div>
-            <h1 class="hero-title">Учись играя!</h1>
-            <p class="hero-desc">Раздел интерактивных шаблонов игр для учителей Кыргызстана.</p>
-            <div class="quote-box">✨ Знание — единственное богатство, которое нельзя отнять.</div>
-            <a href="#games" class="btn-primary">Начать играть →</a>
+}
+
+        /* Грифель карандаша */
+        .pencil-btn::before {
+            content: '';
+            position: absolute;
+            top: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-bottom: 18px solid #fde047;
+        }
+
+        .pencil-btn::after {
+            content: '';
+            position: absolute;
+            top: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-bottom: 8px solid #000;
+        }
+
+        .pencil-green { background: #4ade80; }
+        .pencil-red { background: #ef4444; }
+        .pencil-yellow { background: #facc15; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div id="page-main" class="page active">
+            <div class="game-card">
+                <div class="game-title" data-ru="Викторина" data-kg="Викторина">Викторина</div>
+                <a href="Викторина.pptx" download class="btn-download" data-ru="Скачать" data-kg="Көчүрүү">Скачать</a>
+            </div>
+
+            <div class="game-card">
+                <div class="game-title" data-ru="Поле чудес" data-kg="Поле чудес">Поле чудес</div>
+                <a href="Поле чудес.pptx" download class="btn-download" data-ru="Скачать" data-kg="Көчүрүү">Скачать</a>
+            </div>
+
+            <div class="game-card">
+                <div class="game-title" data-ru="Своя игра" data-kg="Өз оюнум">Своя игра</div>
+                <a href="своя игра.pptm" download class="btn-download" data-ru="Скачать" data-kg="Көчүрүү">Скачать</a>
+            </div>
         </div>
 
-        <div id="games" class="section-title">Каталог шаблонов</div>
-
-        <div class="game-card">
-            <div class="card-top">
-                <div class="icon-box" style="background: #8b5cf6;">📝</div>
-                <span class="tag-popular">ХИТ</span>
+        <div id="page-contacts" class="page">
+            <button class="btn-back" onclick="showPage('main')" data-ru="Назад" data-kg="Артка">Назад</button>
+            
+            <div class="contacts-card">
+                <div class="contacts-title" data-ru="Контакты" data-kg="Байланыштар">Контакты</div>
+                <div class="contact-item">Байматова Альбина</div>
+                <div class="contact-item" style="font-weight: normal; font-size: 15px;" data-ru="Основатель" data-kg="Негиздөөчү">Основатель</div>
+                <div class="contact-item">📞 +996 500 916 773</div>
+                <div class="contact-item">✉️ albinabaimatova2009@gmail.com</div>
             </div>
-            <div>
-                <h3 class="game-name">Викторина</h3>
-                <p class="game-desc">Интерактивный опрос с выбором вариантов для быстрой проверки знаний.</p>
-            </div>
-            <a href="Викторина.pptx" download class="btn-download">Скачать игру</a>
-        </div>
-
-        <div class="game-card">
-            <div class="card-top">
-                <div class="icon-box" style="background: #ef4444;">🎯</div>
-                <span class="tag-new">НОВОЕ</span>
-            </div>
-            <div>
-                <h3 class="game-name">Поле чудес</h3>
-                <p class="game-desc">Азартная игра с барабаном и угадыванием слов по буквам.</p>
-            </div>
-            <a href="Поле чудес.pptx" download class="btn-download">Скачать игру</a>
-        </div>
-
-        <div class="game-card">
-            <div class="card-top">
-                <div class="icon-box" style="background: #f59e0b;">🏆</div>
-                <span class="tag-popular">ТОП</span>
-            </div>
-            <div>
-                <h3 class="game-name">Своя игра</h3>
-                <p class="game-desc">Классическая викторина с выбором категорий и баллов.</p>
-            </div>
-            <a href="своя игра.pptm" download class="btn-download">Скачать игру</a>
         </div>
     </div>
 
-    <div class="bottom-nav">
-        <a href="#" class="nav-item active">
-            <span class="nav-icon">🏠</span>
-            <span>Главная</span>
-        </a>
-        <a href="#games" class="nav-item">
-            <span class="nav-icon">🎮</span>
-            <span>Игры</span>
-        </a>
-        <a href="#" class="nav-item">
-            <span class="nav-icon">💬</span>
-            <span>Контакты</span>
-        </a>
+    <div class="bottom-bar">
+        <button class="lang-btn" onclick="toggleLanguage()">RU | KG</button>
+        
+        <div class="pencil-btn pencil-green" onclick="showPage('main')" data-ru="Главная" data-kg="Башкы">Главная</div>
+        <div class="pencil-btn pencil-red" onclick="showPage('main')" data-ru="Игры" data-kg="Оюндар">Игры</div>
+        <div class="pencil-btn pencil-yellow" onclick="showPage('contacts')" data-ru="Контакты" data-kg="Байланыш">Контакты</div>
     </div>
 
+    <script>
+        let currentLang = 'ru';
+
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById('page-' + pageId).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'ru' ? 'kg' : 'ru';
+            
+            document.querySelectorAll('[data-ru]').forEach(el => {
+                el.innerText = el.getAttribute('data-' + currentLang);
+            });
+        }
+    </script>
 </body>
 </html>
